@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
+import styled from 'react-emotion'
+
 import ClimateFilter from './components/climateFilter'
 import DiameterFilter from './components/diameterFilter'
 import OrbitalFilter from './components/orbitalFilter'
 import PlanetItem from './components/planetItem'
-
-import styled from 'react-emotion'
 
 const Body = styled('section')`
   background-color: #0d0000;
@@ -28,7 +28,6 @@ class App extends Component {
   componentDidMount() {
     let initialPlanets = []
     fetch('https://swapi.co/api/planets/')
-      .then(fetch('https://swapi.co/api/planets/?pages=2'))
       .then(results => {
         return results.json()
       })
@@ -51,17 +50,19 @@ class App extends Component {
           <ClimateFilter
             onClick={index => this.setState({ selectedClimate: index })}
             selected={this.state.selectedClimate}
+            ref={this.climateFilter}
           />
           {this.filterClimate()}
-
           <DiameterFilter
             onClick={index => this.setState({ selectedDiameter: index })}
             selected={this.state.selectedDiameter}
+            ref={this.diameterFilter}
           />
           {this.filterDiameter()}
           <OrbitalFilter
             onClick={index => this.setState({ selectedOrbital: index })}
             selected={this.state.selectedOrbital}
+            ref={this.orbitalFilter}
           />
           {this.filterOrbital()}
         </Body>
@@ -99,7 +100,7 @@ class App extends Component {
         ))
     } else if (selectedDiameter === 2) {
       return planets
-        .filter(planet => planet.diameter >= 100000)
+        .filter(planet => planet.diameter >= 15000)
         .map(planet => (
           <PlanetItem
             key={planet.name}
@@ -111,7 +112,7 @@ class App extends Component {
         ))
     } else if (selectedDiameter === 3) {
       return planets
-        .filter(planet => planet.diameter >= 15000)
+        .filter(planet => planet.diameter >= 100000)
         .map(planet => (
           <PlanetItem
             key={planet.name}
@@ -142,18 +143,6 @@ class App extends Component {
         ))
     } else if (selectedClimate === 1) {
       return planets
-        .filter(planet => planet.climate === 'tropical')
-        .map(planet => (
-          <PlanetItem
-            key={planet.name}
-            name={planet.name}
-            climate={planet.climate}
-            orbital_period={planet.orbital_period}
-            diameter={planet.diameter}
-          />
-        ))
-    } else if (selectedClimate === 2) {
-      return planets
         .filter(planet => planet.climate === 'murky')
         .map(planet => (
           <PlanetItem
@@ -164,19 +153,7 @@ class App extends Component {
             diameter={planet.diameter}
           />
         ))
-    } else if (selectedClimate === 3) {
-      return planets
-        .filter(planet => planet.climate.contains === 'arid')
-        .map(planet => (
-          <PlanetItem
-            key={planet.name}
-            name={planet.name}
-            climate={planet.climate}
-            orbital_period={planet.orbital_period}
-            diameter={planet.diameter}
-          />
-        ))
-    } else {
+    } else if (selectedClimate === 2) {
       return planets
         .filter(planet => planet.climate === 'frozen')
         .map(planet => (
@@ -190,6 +167,7 @@ class App extends Component {
         ))
     }
   }
+
   filterOrbital() {
     const planets = this.state.planets.slice()
     const selectedOrbital = this.state.selectedOrbital

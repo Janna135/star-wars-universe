@@ -7,6 +7,9 @@ const Planet = styled('div')`
   padding: 0 10px 10px;
   border: 1px solid #cfcfcf;
   align-items: center;
+  @media (min-width: 600px) {
+    flex-direction: column;
+  }
 `
 
 const Name = styled('p')`
@@ -23,7 +26,7 @@ const Infos = styled('dl')`
   dt {
     font-weight: bold;
     margin-top: 10px;
-    @media (min-width: 768px) {
+    @media (min-width: 600px) {
       margin-top: 0;
     }
   }
@@ -33,12 +36,12 @@ const Infos = styled('dl')`
     margin-right: 20px;
     -webkit-margin-start: 0;
 
-    @media (min-width: 768px) {
+    @media (min-width: 600px) {
       -webkit-margin-start: 5px;
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 600px) {
     flex-direction: row;
   }
 `

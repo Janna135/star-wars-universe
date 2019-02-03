@@ -9,6 +9,12 @@ const FilterWrapper = styled('div')`
 const FilterRow = styled('div')`
   flex-direction: column;
 `
+const Label = styled('label')`
+  margin-left: 10px;
+`
+const Headline = styled('h3')`
+  color: #00b5ff;
+`
 
 export default class climateFilter extends Component {
   render() {
@@ -16,7 +22,7 @@ export default class climateFilter extends Component {
 
     return (
       <FilterWrapper>
-        <h3>Explore the different climates.</h3>
+        <Headline>Explore the different climates.</Headline>
         <FilterRow>
           <input
             type="radio"
@@ -25,7 +31,7 @@ export default class climateFilter extends Component {
             onClick={e => onClick(0)}
             disabled={selectedClimate === 0}
           />
-          <label htmlFor="1">temperate</label>
+          <Label htmlFor="1">temperate</Label>
         </FilterRow>
         <FilterRow>
           <input
@@ -35,7 +41,7 @@ export default class climateFilter extends Component {
             onClick={e => onClick(1)}
             disabled={selectedClimate === 1}
           />
-          <label htmlFor="2">tropical</label>
+          <Label htmlFor="2">murky</Label>
         </FilterRow>
         <FilterRow>
           <input
@@ -45,27 +51,7 @@ export default class climateFilter extends Component {
             onClick={e => onClick(2)}
             disabled={selectedClimate === 2}
           />
-          <label htmlFor="3">murky</label>
-        </FilterRow>
-        <FilterRow>
-          <input
-            type="radio"
-            id="4"
-            name="climate"
-            onClick={e => onClick(3)}
-            disabled={selectedClimate === 3}
-          />
-          <label htmlFor="4">arid</label>
-        </FilterRow>
-        <FilterRow>
-          <input
-            type="radio"
-            id="5"
-            name="climate"
-            onClick={e => onClick(4)}
-            disabled={selectedClimate === 4}
-          />
-          <label htmlFor="5">frozen</label>
+          <Label htmlFor="3">frozen</Label>
         </FilterRow>
       </FilterWrapper>
     )

@@ -9,6 +9,13 @@ const FilterWrapper = styled('div')`
 const FilterRow = styled('div')`
   flex-direction: column;
 `
+const Label = styled('label')`
+  margin-left: 10px;
+`
+
+const Headline = styled('h3')`
+  color: #00b5ff;
+`
 
 export default class diameterFilter extends Component {
   render() {
@@ -16,7 +23,7 @@ export default class diameterFilter extends Component {
 
     return (
       <FilterWrapper>
-        <h3>Explore the different diameters.</h3>
+        <Headline>Explore the different diameters.</Headline>
         <FilterRow>
           <input
             type="radio"
@@ -25,7 +32,7 @@ export default class diameterFilter extends Component {
             onClick={e => onClick(0)}
             disabled={selected === 0}
           />
-          <label htmlFor="1">smaller than 5.000</label>
+          <Label htmlFor="1">smaller than 5.000</Label>
         </FilterRow>
         <FilterRow>
           <input
@@ -35,7 +42,7 @@ export default class diameterFilter extends Component {
             onClick={e => onClick(1)}
             disabled={selected === 1}
           />
-          <label htmlFor="2">smaller than 10.000</label>
+          <Label htmlFor="2">smaller than 10.000</Label>
         </FilterRow>
         <FilterRow>
           <input
@@ -45,7 +52,7 @@ export default class diameterFilter extends Component {
             onClick={e => onClick(2)}
             disabled={selected === 2}
           />
-          <label htmlFor="2">bigger than 100.000</label>
+          <Label htmlFor="2">bigger than 15.000</Label>
         </FilterRow>
         <FilterRow>
           <input
@@ -55,7 +62,7 @@ export default class diameterFilter extends Component {
             onClick={e => onClick(3)}
             disabled={selected === 3}
           />
-          <label htmlFor="2">bigger than 10.000</label>
+          <Label htmlFor="2">bigger than 100.000</Label>
         </FilterRow>
       </FilterWrapper>
     )
