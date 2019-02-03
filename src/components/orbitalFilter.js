@@ -25,7 +25,7 @@ export default class orbitalFilter extends Component {
 
     return (
       <FilterWrapper>
-        <Headline>Explore the different orbitals.</Headline>
+        <Headline>Explore the different orbital periods.</Headline>
         <FilterRow>
           <input
             type="radio"
