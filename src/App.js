@@ -38,8 +38,6 @@ class App extends Component {
         this.setState({
           planets: initialPlanets
         })
-
-        console.log(this.state.planets)
       })
   }
 
